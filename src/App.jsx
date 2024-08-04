@@ -85,10 +85,10 @@ const App = () => {
 
   return (
     <PrimeReactProvider value={value}>
-      <div className="max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-4xl border-2 p-2 mt-4 bg-[#ffffff]">
+      <div className="max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-4xl mt-4 bg-[#22272e] text-[#C5D1DE] border-2 border-[#444C56] p-2">
         <div className="grid grid-cols-12 grid-rows-10 gap-4">
           <div className="col-span-12 flex align-middle justify-center">
-            <h1 className="text-3xl">Demo Grafana Faro - TDC</h1>
+            <h1 className="text-3xl">Demo Grafana Faro</h1>
           </div>
           <div className="col-span-3 col-start-1 row-start-2 flex">
             <Button
@@ -160,7 +160,7 @@ const App = () => {
             />
           </div>
           <div className="col-span-9 row-span-2 col-start-5 row-start-2">
-            Para fazer uso desse projeto corretamente, crie uma conta em{" "}
+            <p>Para fazer uso desse projeto corretamente, crie uma conta em{" "}
             <a
               className="text-orange-500"
               href="https://grafana.com/auth/sign-in/"
@@ -177,6 +177,11 @@ const App = () => {
               README.md
             </a>{" "}
             desse projeto.
+            </p>
+            <br />
+            <p>
+              Observe os log´s do browser e valide se o end-point do collector está respondendo 2xx no status code.
+            </p>
           </div>
         </div>
       </div>
