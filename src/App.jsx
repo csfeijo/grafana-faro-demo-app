@@ -7,11 +7,11 @@ import { TracingInstrumentation } from "@grafana/faro-web-tracing";
 import { PrimeReactProvider } from "primereact/api";
 import { Button } from "primereact/button";
 
-const appId = ""; // Your Grafana App Id
-const appName = ""; // Your application name
+const appKey = import.meta.env.VITE_FARO_APP_KEY; // Your Grafana App Id
+const appName = import.meta.env.VITE_FARO_APP_ID; // Your application name
 
 let faro = initializeFaro({
-  url: `https://faro-collector-prod-sa-east-1.grafana.net/collect/${appId}`,
+  url: `https://faro-collector-prod-sa-east-1.grafana.net/collect/${appKey}`,
   app: {
     name: appName,
     version: "1.0.0",
