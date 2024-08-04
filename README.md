@@ -1,0 +1,1 @@
+# grafana-faro-demo-app
