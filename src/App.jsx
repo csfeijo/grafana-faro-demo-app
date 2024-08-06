@@ -21,7 +21,9 @@ let faro = initializeFaro({
 
   instrumentations: [
     // Mandatory, overwriting the instrumentations array would cause the default instrumentations to be omitted
-    ...getWebInstrumentations(),
+    ...getWebInstrumentations({
+      captureConsoleDisabledLevels: [],
+    }),
 
     // Initialization of the tracing package.
     // This packages is optional because it increases the bundle size noticeably. Only add it if you want tracing data.
@@ -31,18 +33,18 @@ let faro = initializeFaro({
 
 const handleLog = () => {
   faro.api.pushLog(
-    ["Hello world", new Date().getTime()],
+    ["[LOG] Log normal", new Date().getTime()],
     { level: LogLevel.Debug },
     { skipDedupe: true }
   );
 };
 
 const handleInfo = () => {
-  faro.api.pushLog(["Hello world", 123], { level: LogLevel.INFo });
+  faro.api.pushLog(["[INFO] Log de INFO", 123], { level: LogLevel.INFO });
 };
 
 const handleWarn = () => {
-  faro.api.pushLog(["Hello world", 123], { level: LogLevel.WARN });
+  faro.api.pushLog(["[WANR] Log de WARN", 123], { level: LogLevel.WARN });
 };
 
 const handleError = () => {
@@ -52,6 +54,10 @@ const handleError = () => {
       message: "React error boundary",
     },
   });
+};
+
+const handleConsoleLog = () => {
+  console.log(`[LOG] Log do console do browser ${new Date().getTime()}`)
 };
 
 const handleEvent = () => {
@@ -146,6 +152,13 @@ const App = () => {
               className="w-full text-left"
               severity="secondary"
               onClick={handleEvent}
+            />
+            <Button
+              label="Console Log"
+              icon="pi pi-chevron-right"
+              size="small"
+              className="w-full text-left"
+              onClick={handleConsoleLog}
             />
           </div>
           <div className="col-span-12 row-span-2 col-start-1 md:col-start-4 md:col-span-9 flex flex-col space-y-4">
